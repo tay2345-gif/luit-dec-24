@@ -1,21 +1,78 @@
-This program monitors the health of a list of HTTP endpoints provided in a YAML file. It performs regular checks and calculates the availability percentage for each domain. Here's how it works:
+This program monitors the health of HTTP endpoints defined in a YAML file, checks their availability every 15 seconds, and logs the availability percentage for each domain.
 
-1.Input File:
-The program reads a YAML file containing endpoint details like URL, HTTP method, headers, and optional body.
-Example: Endpoints for fetch.com and fetchrewards.com.
+Features
+Supports HTTP methods (GET, POST) and custom headers.
+Tracks and logs the availability of each domain over time.
+Lightweight and easy to use.
+Prerequisites
+Python Installation
 
-2.Health Checks:
-The program sends HTTP requests to each endpoint every 15 seconds.
-An endpoint is marked UP if:
-The HTTP response code is in the 200–299 range.
-The response time is under 500 milliseconds.
-Otherwise, the endpoint is marked DOWN.
+Ensure Python 3.7+ is installed.
+Download from python.org if not already installed.
+Required Libraries
 
-3.Availability Tracking:
-The program calculates the percentage of successful (UP) requests over the total requests for each domain.
+Install dependencies using pip.
+Setup Instructions
+1. Clone or Download the Repository
+Clone using Git:
+bash
+Copy code
+git clone <repository_url>
+cd <repository_folder>
+Or download the ZIP and extract it.
+2. Install Dependencies
+Run the following command to install required libraries:
+bash
+Copy code
+pip install -r requirements.txt
+Note: A requirements.txt file containing necessary dependencies (e.g., PyYAML, requests) is included.
 
-4.Logging:
-After each 15-second cycle, the program logs the availability percentage of each domain to the console.
+Usage
+Prepare the YAML File
 
-5.Continuous Monitoring:
-The program runs indefinitely, monitoring and reporting until manually stopped.
+Create a YAML file with your endpoint details. Example:
+
+yaml
+Copy code
+- name: Example GET request
+  url: https://example.com
+  headers:
+    user-agent: health-checker
+- name: Example POST request
+  url: https://example.com/api
+  method: POST
+  headers:
+    content-type: application/json
+  body: '{"key": "value"}'
+Run the Program
+
+Use the following command, replacing config.yaml with the path to your YAML file:
+bash
+Copy code
+python health_checker.py config.yaml
+View Logs
+
+The program will output the availability percentage for each domain every 15 seconds.
+Stopping the Program
+To stop monitoring, press Ctrl + C (Windows/Linux) or Cmd + C (Mac).
+Example Output
+yaml
+Copy code
+Domain: example.com, Availability: 100.00%
+Domain: example.org, Availability: 97.50%
+This output updates every 15 seconds, showing the cumulative availability percentage for each domain.
+
+Troubleshooting
+Missing Libraries:
+If you encounter a ModuleNotFoundError, ensure dependencies are installed:
+
+bash
+Copy code
+pip install -r requirements.txt
+YAML File Issues:
+
+Ensure your YAML file is correctly formatted.
+Verify all required fields (name, url) are present.
+Connectivity Problems:
+
+Check your network connection and the accessibility of the provided endpoints.
