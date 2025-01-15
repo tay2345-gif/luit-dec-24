@@ -17,15 +17,17 @@ Prerequisites
 Setup Instructions
 1. Clone or Download the Repository
 Clone using Git:
-bash
-- git clone <repository_url>
-- cd <repository_folder>
+```bash
+git clone <repository_url>
+cd <repository_folder>
+```
 - Or download the ZIP and extract it.
   
 2. Install Dependencies
 - Run the following command to install required libraries:
-bash
-- pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 - Note: A requirements.txt file containing necessary dependencies (e.g., PyYAML, requests) is included.
 
 Usage
@@ -33,7 +35,7 @@ Usage
 
 - Create a YAML file with your endpoint details. Example:
 
-yaml
+```yaml
 
 - name: Example GET request
   url: https://example.com
@@ -45,13 +47,14 @@ yaml
   headers:
     content-type: application/json
   body: '{"key": "value"}'
+```
 
 2.Run the Program
 
 - Use the following command, replacing config.yaml with the path to your YAML file:
-bash
-
-- python health_checker.py config.yaml
+```bash
+python health_checker.py config.yaml
+```
 
 3.View Logs
 - The program will output the availability percentage for each domain every 15 seconds.
@@ -60,10 +63,10 @@ Stopping the Program
 - To stop monitoring, press Ctrl + C (Windows/Linux) or Cmd + C (Mac).
 Example Output:
 
-yaml
-
-- Domain: example.com, Availability: 100.00%
-- Domain: example.org, Availability: 97.50%
+```yaml
+Domain: example.com, Availability: 100.00%
+Domain: example.org, Availability: 97.50%
+```
 
 - This output updates every 15 seconds, showing the cumulative availability percentage for each domain.
 
@@ -71,9 +74,9 @@ Troubleshooting
 1.Missing Libraries:
 - If you encounter a ModuleNotFoundError, ensure dependencies are installed:
 
-bash
-
-- pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
 YAML File Issues:
 
